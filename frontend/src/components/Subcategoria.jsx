@@ -1,0 +1,63 @@
+function Subcategoria({ subcategorias, onSelect, categoria }) {
+  const coloresCategorias = {
+    Historia: "#f1c40f",
+    Ciencia: "#27ae60",
+    Deportes: "#ff7f00",
+    Geografía: "#2980b9",
+    "Arte y literatura": "#e74c3c",
+    Entretenimiento: "#8e44ad"
+  };
+
+  const colorFondo = coloresCategorias[categoria] || "#333";
+  
+  return (
+    <div
+      style={{
+        height: "100vh",
+        backgroundColor: colorFondo,
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+        padding: "20px"
+      }}
+    >
+      {/* 🧠 TÍTULO */}
+      <h2 style={{ color: "white", marginBottom: "30px" }}>
+        {categoria}
+      </h2>
+
+      {/* 🎯 BOTONES */}
+      <div
+        style={{
+          width: "100%",
+          maxWidth: "300px",
+          display: "flex",
+          flexDirection: "column",
+          gap: "20px"
+        }}
+      >
+        {subcategorias.map((sub) => (
+          <button
+            key={sub}
+            onClick={() => onSelect(sub)}
+            style={{
+              padding: "20px",
+              fontSize: "18px",
+              fontWeight: "bold",
+              borderRadius: "15px",
+              border: "none",
+              backgroundColor: "white",
+              color: "#333",
+              boxShadow: "0 6px 12px rgba(0,0,0,0.3)"
+            }}
+          >
+            {sub}
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+export default Subcategoria;
