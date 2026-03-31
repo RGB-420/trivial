@@ -1,3 +1,12 @@
+import {
+  LibraryBig,
+  Medal,
+  TestTubes,
+  Earth,
+  Amphora,
+  Clapperboard
+} from "lucide-react";
+
 function Home({ categorias, onSelect, dificultad, setDificultad, onSave }) {
   const coloresCategorias = {
     Historia: "#ffdd00",
@@ -6,6 +15,15 @@ function Home({ categorias, onSelect, dificultad, setDificultad, onSave }) {
     Geografía: "#2980b9",
     "Arte y literatura": "#e74c3c",
     Entretenimiento: "#8e44ad"
+  };
+
+  const iconosCategorias = {
+    Historia: <LibraryBig size={20} />,
+    Deportes: <Medal size={20} />,
+    Ciencia: <TestTubes size={20} />,
+    Geografía: <Earth size={20} />,
+    "Arte y literatura": <Amphora size={20} />,
+    Entretenimiento: <Clapperboard size={20} />
   };
 
   return (
@@ -66,9 +84,14 @@ function Home({ categorias, onSelect, dificultad, setDificultad, onSave }) {
               border: "none",
               color: "white",
               backgroundColor: coloresCategorias[cat] || "#555",
-              boxShadow: "0 4px 8px rgba(0,0,0,0.2)"
+              boxShadow: "0 4px 8px rgba(0,0,0,0.2)",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              gap: "8px"
             }}
           >
+            {iconosCategorias[cat]}
             {cat}
           </button>
         ))}

@@ -29,7 +29,8 @@ function Juego({ preguntas, onReset, onToggleRevision, onResultado, categoria })
   return (
     <div
       style={{
-        height: "100vh",
+        minHeight: "100vh",
+        overflow: "hidden",
         backgroundColor: colorFondo,
         display: "flex",
         justifyContent: "center",

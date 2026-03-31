@@ -13,7 +13,8 @@ function Subcategoria({ subcategorias, onSelect, categoria }) {
   return (
     <div
       style={{
-        height: "100vh",
+        minHeight: "100vh",
+        overflow: "hidden",
         backgroundColor: colorFondo,
         display: "flex",
         flexDirection: "column",
@@ -23,9 +24,9 @@ function Subcategoria({ subcategorias, onSelect, categoria }) {
       }}
     >
       {/* 🧠 TÍTULO */}
-      <h2 style={{ color: "white", marginBottom: "30px" }}>
+      <h1 style={{ color: "white", marginBottom: "30px" }}>
         {categoria}
-      </h2>
+      </h1>
 
       {/* 🎯 BOTONES */}
       <div
