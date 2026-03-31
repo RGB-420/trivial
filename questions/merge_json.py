@@ -2,8 +2,8 @@ import json
 import os
 from pathlib import Path
 
-INPUT_DIR = "./preguntas_generadas"
-OUTPUT_FILE = "C:/Users/beepe/Desktop/trivia/trivial-app/src/data/preguntas.json"
+INPUT_DIR = "./questions/preguntas_generadas"
+OUTPUT_FILE = "C:/Users/beepe/Desktop/trivia/frontend/src/data/preguntas.json"
 
 
 def load_all_jsons(input_dir):

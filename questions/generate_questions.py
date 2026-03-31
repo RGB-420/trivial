@@ -135,6 +135,18 @@ Reglas específicas:
 - No generes preguntas que dependan de opinión o interpretación
 - No generes preguntas con múltiples respuestas correctas posibles
 - Si no puedes generar suficiente variedad real, genera preguntas más profundas en vez de repetir ejemplos obvios
+
+CONTROL DE DIVERSIDAD (MUY IMPORTANTE):
+- Antes de generar cada pregunta, asegúrate de que es claramente diferente a todas las anteriores
+- No cambies solo una palabra o el contexto: la idea debe ser distinta
+- No hagas más de una pregunta sobre el mismo concepto central aunque cambie la redacción
+- Evita patrones repetitivos en la estructura de la pregunta
+- Evita preguntas que solo cambien el país o nombre manteniendo la misma plantilla
+- Cada bloque debe cubrir el mayor número posible de conceptos distintos dentro de la subcategoría
+
+AUTOCONTROL:
+- Revisa mentalmente el conjunto completo antes de responder
+- Si detectas repetición o poca variedad, rehace las preguntas necesarias antes de devolver el resultado
 """
 
 
