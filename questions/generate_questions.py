@@ -15,23 +15,52 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-SYSTEM_PROMPT = """Eres un generador de preguntas de trivial de alta calidad.
+NIVELES_GENERAR = [3]
 
-Tu tarea es crear EXACTAMENTE el numero de preguntas solicitado.
+SYSTEM_PROMPT = """Eres un generador experto de preguntas de trivial de alta calidad.
 
-Reglas generales:
-- Las preguntas deben ser precisas, verificables y con UNA respuesta principal clara.
-- Evita preguntas demasiado famosas, obvias o repetitivas.
-- Evita ambiguedades.
-- No repitas el mismo hecho con redacciones distintas.
-- Varia los temas dentro de la subcategoria.
-- Las respuestas deben ser cortas siempre que sea posible.
-- Incluye alternativas validas solo si realmente son razonables.
-- La explicacion debe tener 1 o 2 frases y justificar por que la respuesta es correcta.
-- No incluyas texto fuera del JSON.
-- Si una pregunta no puede hacerse con suficiente claridad o calidad, sustituyela por otra mejor.
+OBJETIVO:
+Crear preguntas variadas, no repetitivas y con alto valor educativo dentro de una subcategoría.
+
+REGLAS CRÍTICAS:
+- Genera EXACTAMENTE el número de preguntas solicitado.
+- Cada pregunta debe centrarse en un concepto distinto.
+- Evita repetir:
+  - el mismo tema
+  - la misma entidad (persona, obra, país, evento, etc.)
+  - el mismo tipo de pregunta con ligeras variaciones
+
+CALIDAD:
+- Preguntas específicas, no genéricas
+- Evita preguntas triviales o demasiado conocidas
+- Evita preguntas excesivamente oscuras o irrelevantes
+- Cada pregunta debe ser interesante por sí misma
+
+RESPUESTAS:
+- Debe haber UNA respuesta principal clara
+- Respuestas cortas y concretas
+- Incluye alternativas solo si son realmente equivalentes
+
+EXPLICACIONES:
+- 1 o 2 frases máximo
+- Deben justificar por qué la respuesta es correcta
+
+DIVERSIDAD (MUY IMPORTANTE):
+- Máxima variedad dentro de la subcategoría
+- Cambia:
+  - tipo de conocimiento (histórico, técnico, cultural…)
+  - tipo de pregunta (definición, identificación, causa, dato concreto…)
+- No generes bloques repetitivos (ej: varias preguntas tipo “¿Quién fue…?”)
+
+PROHIBIDO:
+- Preguntas ambiguas
+- Preguntas opinables
+- Preguntas con múltiples respuestas posibles
+- Repetición de estructuras
+
+FORMATO:
+- Devuelve SOLO JSON válido según el esquema
 """
-
 
 QUESTION_SCHEMA: dict[str, Any] = {
     "type": "object",
@@ -109,44 +138,43 @@ def build_user_prompt(
 
 Categoría: {categoria}
 Subcategoría: {subcategoria}
-Dificultad: {dificultad}
+Dificultad: {dificultad} (nivel universidad)
 
-Escala de dificultad:
-1 = nivel secundaria (conocimiento general accesible)
-2 = nivel bachillerato (requiere algo más de detalle)
-3 = nivel universidad (cultura general sólida o conocimiento específico)
-4 = nivel avanzado (preguntas difíciles de concurso)
-5 = nivel experto (muy específicas o poco conocidas)
+ENFOQUE ESPECÍFICO:
+- Prioriza conocimiento relevante y representativo de la subcategoría
+- Evita centrar demasiadas preguntas en un solo tema dentro de la subcategoría
+- Cubre el mayor número posible de conceptos distintos
 
-Reglas específicas:
-- Ajusta la dificultad REAL al nivel solicitado
-- Para niveles bajos (1-2): evita preguntas demasiado técnicas o raras
-- Para niveles altos (4-5): evita preguntas típicas o demasiado conocidas
-- Preguntas específicas, no generales
-- Cada pregunta debe tener UNA única respuesta clara
-- Evita ambigüedades
-- No repitas conceptos entre preguntas
-- No reutilices la misma respuesta principal más de una vez dentro del lote
-- No generes varias preguntas sobre el mismo país, ciudad, persona, territorio, tratado, evento o entidad principal
-- Evita variaciones mínimas de una misma idea
-- Varía los temas dentro de la subcategoría
-- Si la subcategoría se presta a repetición, fuerza diversidad de ejemplos y enfoques
-- Devuelve solo datos que encajen en el esquema JSON
-- No generes preguntas que dependan de opinión o interpretación
-- No generes preguntas con múltiples respuestas correctas posibles
-- Si no puedes generar suficiente variedad real, genera preguntas más profundas en vez de repetir ejemplos obvios
+CONTROL DE CALIDAD:
+- Cada pregunta debe ser única en concepto
+- No repitas:
+  - misma persona
+  - misma obra
+  - mismo evento
+  - mismo lugar
+- Máximo 1 pregunta por entidad principal
 
-CONTROL DE DIVERSIDAD (MUY IMPORTANTE):
-- Antes de generar cada pregunta, asegúrate de que es claramente diferente a todas las anteriores
-- No cambies solo una palabra o el contexto: la idea debe ser distinta
-- No hagas más de una pregunta sobre el mismo concepto central aunque cambie la redacción
-- Evita patrones repetitivos en la estructura de la pregunta
-- Evita preguntas que solo cambien el país o nombre manteniendo la misma plantilla
-- Cada bloque debe cubrir el mayor número posible de conceptos distintos dentro de la subcategoría
+VARIEDAD:
+- Mezcla:
+  - conceptos teóricos
+  - datos concretos
+  - contexto histórico/cultural
+  - identificación
+
+DIFICULTAD NIVEL 3:
+- Conocimiento de cultura general sólida
+- No trivial, pero tampoco ultra especializado
+- Evita preguntas tipo:
+  - “¿Quién es…?” demasiado obvias
+  - datos extremadamente raros
 
 AUTOCONTROL:
-- Revisa mentalmente el conjunto completo antes de responder
-- Si detectas repetición o poca variedad, rehace las preguntas necesarias antes de devolver el resultado
+Antes de responder:
+- Revisa que no hay repeticiones
+- Revisa que hay variedad real
+- Reemplaza preguntas débiles por mejores
+
+Devuelve SOLO JSON válido.
 """
 
 
@@ -161,10 +189,18 @@ def validate_questions(
     if not isinstance(preguntas, list):
         raise ValueError("La respuesta no contiene una lista válida en 'preguntas'.")
 
-    if len(preguntas) != expected_count:
+    MIN_ACCEPTABLE = int(expected_count * 0.8)  # 80%
+    MAX_ACCEPTABLE = int(expected_count * 1.5)  # margen alto
+
+    n = len(preguntas)
+
+    if n < MIN_ACCEPTABLE:
         raise ValueError(
-            f"Se esperaban {expected_count} preguntas y llegaron {len(preguntas)}."
+            f"Demasiadas pocas preguntas: {n} (mínimo aceptable {MIN_ACCEPTABLE})"
         )
+
+    if n > expected_count:
+        preguntas = preguntas[:expected_count]  # recorte limpio
 
     seen_questions: set[str] = set()
     validated: list[dict[str, Any]] = []
@@ -308,7 +344,7 @@ if __name__ == "__main__":
         categoria = row["categoria"]
         subcategoria = row["subcategoria"]
 
-        for nivel in [1, 2, 3, 4, 5]:
+        for nivel in NIVELES_GENERAR:
             n_preguntas = int(row[f"nivel_{nivel}"])
 
             if n_preguntas == 0:

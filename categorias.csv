@@ -1,62 +1,125 @@
 categoria,subcategoria,nivel_1,nivel_2,nivel_3,nivel_4,nivel_5
-Historia,Imperio romano,0,20,20,20,0
-Historia,Revoluciones,0,20,20,20,0
-Historia,Guerra Fría,0,20,20,20,0
-Historia,Historia militar,0,20,20,20,0
-Historia,Imperio bizantino,0,20,20,20,0
-Historia,Grecia clásica,0,20,20,20,0
-Historia,Historia de España,0,20,20,20,0
-Historia,Primera Guerra Mundial,0,20,20,20,0
-Historia,Segunda Guerra Mundial,0,20,20,20,0
-Historia,Imperio otomano,0,20,20,20,0
-Ciencia,Astronomía,0,20,20,20,0
-Ciencia,Física clásica,0,20,20,20,0
-Ciencia,Genética,0,20,20,20,0
-Ciencia,Química general,0,20,20,20,0
-Ciencia,Matemáticas,0,20,20,20,0
-Ciencia,Relatividad,0,20,20,20,0
-Ciencia,Astrofísica,0,20,20,20,0
-Ciencia,Biología celular,0,20,20,20,0
-Ciencia,Termodinámica,0,20,20,20,0
-Ciencia,Historia de la ciencia,0,20,20,20,0
-Geografía,Capitales del mundo,0,20,20,20,0
-Geografía,Fronteras y enclaves,0,20,20,20,0
-Geografía,Ríos,0,20,20,20,0
-Geografía,Montañas,0,20,20,20,0
-Geografía,Geografía política,0,20,20,20,0
-Ciencia,Relatividad,0,20,20,20,0
-Ciencia,Astrofísica,0,20,20,20,0
-Ciencia,Biología celular,0,20,20,20,0
-Ciencia,Termodinámica,0,20,20,20,0
-Ciencia,Historia de la ciencia,0,20,20,20,0
-Deportes,Estadísticas deportivas,0,20,20,20,0
-Deportes,Deportes de equipo,0,20,20,20,0
-Deportes,Baloncesto,0,20,20,20,0
-Deportes,Tenis,0,20,20,20,0
-Deportes,Juegos Olímpicos,0,20,20,20,0
-Deportes,Récords históricos,0,20,20,20,0
-Deportes,Finales históricas,0,20,20,20,0
-Deportes,Competiciones internacionales,0,20,20,20,0
-Deportes,Fórmula 1,0,20,20,20,0
-Deportes,Atletismo,0,20,20,20,0
-Deportes,Futbol,0,20,20,20,0
-Entretenimiento,Cine moderno,0,20,20,20,0
-Entretenimiento,Series de televisión,0,20,20,20,0
-Entretenimiento,Actores y actrices,0,20,20,20,0
-Entretenimiento,Videojuegos,0,20,20,20,0
-Entretenimiento,Cultura pop,0,20,20,20,0
-Entretenimiento,Directores de cine,0,20,20,20,0
-Entretenimiento,Premios Óscar,0,20,20,20,0
-Entretenimiento,Bandas sonoras,0,20,20,20,0
-Entretenimiento,Cine europeo,0,20,20,20,0
-Entretenimiento,Sagas cinematográficas,0,20,20,20,0
-Arte y literatura,Filosofía,0,20,20,20,0
-Arte y literatura,Literatura clásica,0,20,20,20,0
-Arte y literatura,Movimientos literarios,0,20,20,20,0
-Arte y literatura,Pintura,0,20,20,20,0
-Arte y literatura,Arquitectura,0,20,20,20,0
-Arte y literatura,Literatura moderna,0,20,20,20,0
-Arte y literatura,Literatura latinoamericana,0,20,20,20,0
-Arte y literatura,Poesía,0,20,20,20,0
-Arte y literatura,Historia del arte,0,20,20,20,0
-Arte y literatura,Autores clásicos,0,20,20,20,0
+Historia,Imperio romano,0,20,60,20,0
+Historia,Revoluciones,0,20,60,20,0
+Historia,Guerra Fría,0,20,60,20,0
+Historia,Historia militar,0,20,60,20,0
+Historia,Imperio bizantino,0,20,60,20,0
+Historia,Grecia clásica,0,20,60,20,0
+Historia,Historia de España,0,20,60,20,0
+Historia,Primera Guerra Mundial,0,20,60,20,0
+Historia,Segunda Guerra Mundial,0,20,60,20,0
+Historia,Imperio otomano,0,20,60,20,0
+Historia,Edad Media,0,20,60,20,0
+Historia,Edad Moderna,0,20,60,20,0
+Historia,Historia de América,0,20,60,20,0
+Historia,Colonialismo,0,20,60,20,0
+Historia,Historia de Asia,0,20,60,20,0
+Historia,Historia contemporánea,0,20,60,20,0
+Historia,Grandes líderes,0,20,60,20,0
+Historia,Historia económica,0,20,60,20,0
+Historia,Historia cultural,0,20,60,20,0
+Historia,Exploraciones,0,20,60,20,0
+
+Ciencia,Astronomía,0,20,60,20,0
+Ciencia,Física clásica,0,20,60,20,0
+Ciencia,Genética,0,20,60,20,0
+Ciencia,Química general,0,20,60,20,0
+Ciencia,Matemáticas,0,20,60,20,0
+Ciencia,Relatividad,0,20,60,20,0
+Ciencia,Astrofísica,0,20,60,20,0
+Ciencia,Biología celular,0,20,60,20,0
+Ciencia,Termodinámica,0,20,60,20,0
+Ciencia,Historia de la ciencia,0,20,60,20,0
+Ciencia,Ecología,0,20,60,20,0
+Ciencia,Bioquímica,0,20,60,20,0
+Ciencia,Geología,0,20,60,20,0
+Ciencia,Meteorología,0,20,60,20,0
+Ciencia,Neurociencia,0,20,60,20,0
+Ciencia,Óptica,0,20,60,20,0
+Ciencia,Electromagnetismo,0,20,60,20,0
+Ciencia,Física cuántica,0,20,60,20,0
+Ciencia,Ingeniería,0,20,60,20,0
+Ciencia,Ciencia espacial,0,20,60,20,0
+
+Geografía,Capitales del mundo,0,20,60,20,0
+Geografía,Ríos,0,20,60,20,0
+Geografía,Montañas,0,20,60,20,0
+Geografía,Geografía política,0,20,60,20,0
+Geografía,Climas,0,20,60,20,0
+Geografía,Desiertos,0,20,60,20,0
+Geografía,Océanos,0,20,60,20,0
+Geografía,Países del mundo,0,20,60,20,0
+Geografía,Mapas históricos,0,20,60,20,0
+Geografía,Islas,0,20,60,20,0
+Geografía,Lagos,0,20,60,20,0
+Geografía,Relieve terrestre,0,20,60,20,0
+Geografía,Geografía urbana,0,20,60,20,0
+Geografía,Demografía,0,20,60,20,0
+Geografía,Regiones del mundo,0,20,60,20,0
+Geografía,Recursos naturales,0,20,60,20,0
+Geografía,Geografía económica,0,20,60,20,0
+Geografía,Parques naturales,0,20,60,20,0
+Geografía,Volcanes,0,20,60,20,0
+
+Deportes,Estadísticas deportivas,0,20,60,20,0
+Deportes,Deportes de equipo,0,20,60,20,0
+Deportes,Baloncesto,0,20,60,20,0
+Deportes,Tenis,0,20,60,20,0
+Deportes,Juegos Olímpicos,0,20,60,20,0
+Deportes,Récords históricos,0,20,60,20,0
+Deportes,Finales históricas,0,20,60,20,0
+Deportes,Competiciones internacionales,0,20,60,20,0
+Deportes,Fórmula 1,0,20,60,20,0
+Deportes,Atletismo,0,20,60,20,0
+Deportes,Fútbol,0,20,60,20,0
+Deportes,Ciclismo,0,20,60,20,0
+Deportes,Natación,0,20,60,20,0
+Deportes,Deportes extremos,0,20,60,20,0
+Deportes,Artes marciales,0,20,60,20,0
+Deportes,Rugby,0,20,60,20,0
+Deportes,Deportes de invierno,0,20,60,20,0
+Deportes,Historia del deporte,0,20,60,20,0
+Deportes,Entrenadores famosos,0,20,60,20,0
+Deportes,Clubes históricos,0,20,60,20,0
+
+Entretenimiento,Cine moderno,0,20,60,20,0
+Entretenimiento,Historia del cine,0,20,60,20,0
+Entretenimiento,Directores de cine,0,20,60,20,0
+Entretenimiento,Premios Óscar,0,20,60,20,0
+Entretenimiento,Series de televisión,0,20,60,20,0
+Entretenimiento,Plataformas de streaming,0,20,60,20,0
+Entretenimiento,Reality shows,0,20,60,20,0
+Entretenimiento,Programas de televisión,0,20,60,20,0
+Entretenimiento,Música pop,0,20,60,20,0
+Entretenimiento,Rock,0,20,60,20,0
+Entretenimiento,Hip hop y rap,0,20,60,20,0
+Entretenimiento,Música electrónica,0,20,60,20,0
+Entretenimiento,Historia de la música,0,20,60,20,0
+Entretenimiento,Artistas musicales,0,20,60,20,0
+Entretenimiento,Festivales de música,0,20,60,20,0
+Entretenimiento,Premios musicales,0,20,60,20,0
+Entrtenimiento,Musica clásica,0,20,60,20,0
+Entretenimiento,Videojuegos,0,20,60,20,0
+Entretenimiento,Cultura pop,0,20,60,20,0
+Entretenimiento,Redes sociales e influencers,0,20,60,20,0
+
+Arte y literatura,Filosofía,0,20,60,20,0
+Arte y literatura,Literatura clásica,0,20,60,20,0
+Arte y literatura,Movimientos literarios,0,20,60,20,0
+Arte y literatura,Pintura,0,20,60,20,0
+Arte y literatura,Arquitectura,0,20,60,20,0
+Arte y literatura,Literatura moderna,0,20,60,20,0
+Arte y literatura,Literatura latinoamericana,0,20,60,20,0
+Arte y literatura,Poesía,0,20,60,20,0
+Arte y literatura,Historia del arte,0,20,60,20,0
+Arte y literatura,Autores clásicos,0,20,60,20,0
+Arte y literatura,Escultura,0,20,60,20,0
+Arte y literatura,Arte contemporáneo,0,20,60,20,0
+Arte y literatura,Teatro,0,20,60,20,0
+Arte y literatura,Ensayo,0,20,60,20,0
+Arte y literatura,Novela,0,20,60,20,0
+Arte y literatura,Arte renacentista,0,20,60,20,0
+Arte y literatura,Arte barroco,0,20,60,20,0
+Arte y literatura,Arte moderno,0,20,60,20,0
+Arte y literatura,Crítica literaria,0,20,60,20,0
+Arte y literatura,Mitología,0,20,60,20,0
