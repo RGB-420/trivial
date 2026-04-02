@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { StarOff, Star, Check, X } from 'lucide-react';
+import { StarOff, Star, Check, X, ArrowLeft } from 'lucide-react';
 
 function Juego({ preguntas, onReset, onToggleRevision, onResultado, categoria }) {
   const coloresCategorias = {
@@ -26,6 +26,24 @@ function Juego({ preguntas, onReset, onToggleRevision, onResultado, categoria })
 
   if (!preguntaActual) return <p>Cargando...</p>;
 
+  const [fade, setFade] = useState(true);
+
+  const siguientePregunta = () => {
+    setFade(false);
+
+    setTimeout(() => {
+      const nueva = getRandomPregunta();
+      setPreguntaActualId(nueva.id);
+      setMostrarRespuesta(false);
+      setFade(true);
+    }, 200);
+  };
+  const cambiarPregunta = () => {
+    const nueva = getRandomPregunta();
+    setPreguntaActualId(nueva.id);
+    setMostrarRespuesta(false);
+  };
+
   return (
     <div
       style={{
@@ -38,6 +56,26 @@ function Juego({ preguntas, onReset, onToggleRevision, onResultado, categoria })
         padding: "20px"
       }}
     >
+      <button
+        onClick={onReset}
+        style={{
+          position: "absolute",
+          top: "20px",
+          left: "20px",
+          background: "rgba(255,255,255,0.2)",
+          border: "none",
+          borderRadius: "50%",
+          width: "40px",
+          height: "40px",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          cursor: "pointer",
+          backdropFilter: "blur(5px)"
+        }}
+      >
+        <ArrowLeft color="white" />
+      </button>
       {/* 🧾 CARD */}
       <div
         style={{
@@ -65,14 +103,30 @@ function Juego({ preguntas, onReset, onToggleRevision, onResultado, categoria })
 
         {/* 👁️ VER RESPUESTA */}
         {!mostrarRespuesta && (
-          <button
-            onClick={() => setMostrarRespuesta(true)}
-            style={botonPrimario}
-          >
-            Ver respuesta
-          </button>
-        )}
+          <>
+            <button
+              onClick={() => setMostrarRespuesta(true)}
+              style={botonPrimario}
+            >
+              Ver respuesta
+            </button>
 
+            <button
+              onClick={cambiarPregunta}
+              style={{
+                marginTop: "10px",
+                background: "none",
+                border: "none",
+                color: "#888",
+                fontSize: "14px",
+                cursor: "pointer"
+              }}
+            >
+              Otra pregunta
+            </button>
+          </>
+        )}
+        
         {/* ✅ RESPUESTA */}
         {mostrarRespuesta && (
           <>
@@ -83,7 +137,7 @@ function Juego({ preguntas, onReset, onToggleRevision, onResultado, categoria })
             <p style={{ fontSize: "14px", color: "#555" }}>
               {preguntaActual.explicacion}
             </p>
-
+          
             {/* 🎯 RESULTADO */}
             <div style={{ marginTop: "20px", display: "flex", gap: "10px" }}>
               <button
@@ -122,20 +176,6 @@ function Juego({ preguntas, onReset, onToggleRevision, onResultado, categoria })
         >
           {marcada ? <Star /> : <StarOff /> }
         </div>
-
-        {/* 🔁 VOLVER */}
-        <button
-          onClick={onReset}
-          style={{
-            marginTop: "10px",
-            background: "none",
-            border: "none",
-            color: "#777",
-            fontSize: "12px"
-          }}
-        >
-          Cambiar categoría
-        </button>
       </div>
     </div>
   );
