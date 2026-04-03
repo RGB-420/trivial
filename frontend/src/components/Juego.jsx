@@ -58,23 +58,23 @@ function Juego({ preguntas, onReset, onToggleRevision, onResultado, categoria, s
 
       <button
         onClick={onReset}
-        style={{
-          position: "absolute",
-          top: "20px",
-          left: "20px",
-          background: "rgba(255,255,255,0.2)",
-          border: "none",
-          borderRadius: "50%",
-          width: "40px",
-          height: "40px",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          cursor: "pointer",
-          backdropFilter: "blur(5px)"
-        }}
+          style={{
+            position: "absolute",
+            top: "10%",
+            left: "10%",
+            background: "white",
+            border: "none",
+            borderRadius: "50%",
+            width: "55px",
+            height: "55px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            cursor: "pointer",
+            boxShadow: "0 8px 20px rgba(0,0,0,0.3)"
+          }}
       >
-        <ArrowLeft color="white" />
+        <ArrowLeft size={24} color="#222" />
       </button>
       {/* 🧾 CARD */}
       <div
