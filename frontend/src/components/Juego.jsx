@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { StarOff, Star, Check, X, ArrowLeft } from 'lucide-react';
+import { StarOff, Star, Check, X, ArrowLeft, RotateCw } from 'lucide-react';
 
-function Juego({ preguntas, onReset, onToggleRevision, onResultado, categoria }) {
+function Juego({ preguntas, onReset, onToggleRevision, onResultado, categoria, subcategoria }) {
   const coloresCategorias = {
     Historia: "#ffdd00",
     Deportes: "#fd7a00",
@@ -10,7 +10,7 @@ function Juego({ preguntas, onReset, onToggleRevision, onResultado, categoria })
     "Arte y literatura": "#e74c3c",
     Entretenimiento: "#8e44ad"
   };
-
+  console.log(subcategoria)
   const colorFondo = coloresCategorias[categoria] || "#333";
 
   const getRandomPregunta = () =>
@@ -26,18 +26,6 @@ function Juego({ preguntas, onReset, onToggleRevision, onResultado, categoria })
 
   if (!preguntaActual) return <p>Cargando...</p>;
 
-  const [fade, setFade] = useState(true);
-
-  const siguientePregunta = () => {
-    setFade(false);
-
-    setTimeout(() => {
-      const nueva = getRandomPregunta();
-      setPreguntaActualId(nueva.id);
-      setMostrarRespuesta(false);
-      setFade(true);
-    }, 200);
-  };
   const cambiarPregunta = () => {
     const nueva = getRandomPregunta();
     setPreguntaActualId(nueva.id);
@@ -48,14 +36,26 @@ function Juego({ preguntas, onReset, onToggleRevision, onResultado, categoria })
     <div
       style={{
         minHeight: "100vh",
-        overflow: "hidden",
         backgroundColor: colorFondo,
         display: "flex",
+        flexDirection: "column", // 👈 clave
         justifyContent: "center",
         alignItems: "center",
         padding: "20px"
       }}
     >
+      <h1
+        style={{
+          position: "absolute",
+          top: "20px",
+          left: "50%",
+          transform: "translateX(-50%)",
+          color: "white"
+        }}
+      >
+        {subcategoria}
+      </h1>
+
       <button
         onClick={onReset}
         style={{
@@ -80,13 +80,14 @@ function Juego({ preguntas, onReset, onToggleRevision, onResultado, categoria })
       <div
         style={{
           backgroundColor: "white",
-          color: "#222", // 👈 CLAVE
+          color: "#222", 
           borderRadius: "20px",
           padding: "25px",
           width: "100%",
           maxWidth: "350px",
           textAlign: "center",
-          boxShadow: "0 10px 25px rgba(0,0,0,0.3)"
+          boxShadow: "0 10px 25px rgba(0,0,0,0.3)",
+          position: "relative"
         }}
       >
         {/* ❓ PREGUNTA */}
@@ -111,19 +112,6 @@ function Juego({ preguntas, onReset, onToggleRevision, onResultado, categoria })
               Ver respuesta
             </button>
 
-            <button
-              onClick={cambiarPregunta}
-              style={{
-                marginTop: "10px",
-                background: "none",
-                border: "none",
-                color: "#888",
-                fontSize: "14px",
-                cursor: "pointer"
-              }}
-            >
-              Otra pregunta
-            </button>
           </>
         )}
         
@@ -167,8 +155,8 @@ function Juego({ preguntas, onReset, onToggleRevision, onResultado, categoria })
         <div
           style={{
             position: "absolute",
-            top: "15px",
-            right: "15px",
+            top: "10px",
+            right: "10px",
             cursor: "pointer",
             fontSize: "18px"
           }}
@@ -176,6 +164,28 @@ function Juego({ preguntas, onReset, onToggleRevision, onResultado, categoria })
         >
           {marcada ? <Star /> : <StarOff /> }
         </div>
+
+        <button
+          onClick={cambiarPregunta}
+          style={{
+            position: "absolute",
+            bottom: "-100px", // 👈 lo baja fuera
+            left: "50%",
+            transform: "translateX(-50%)", // 👈 centrado perfecto
+            background: "white",
+            border: "none",
+            borderRadius: "50%",
+            width: "55px",
+            height: "55px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            cursor: "pointer",
+            boxShadow: "0 8px 20px rgba(0,0,0,0.3)"
+          }}
+        >
+          <RotateCw size={24} color="#222" />
+        </button>
       </div>
     </div>
   );

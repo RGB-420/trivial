@@ -127,6 +127,7 @@ function App() {
 
     URL.revokeObjectURL(url);
   };
+  console.log(subcategoriaSeleccionada)
 
   return (
     <div>
@@ -151,6 +152,7 @@ function App() {
           onToggleRevision={toggleRevision}
           onResultado={actualizarStats}
           categoria={categoriaSeleccionada}
+          subcategoria={subcategoriaSeleccionada}
         />
       )}
     </div>
