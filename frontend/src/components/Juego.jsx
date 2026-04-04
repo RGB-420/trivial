@@ -164,18 +164,17 @@ function Juego({ preguntas, onReset, onToggleRevision, onResultado, categoria, s
 }
 
 const cardStyle = {
-  background: "rgba(255,255,255,0.95)",
-  backdropFilter: "blur(10px)",
-  borderRadius: "20px",
-  padding: "25px",
+  background: "rgba(255,255,255,0.85)",
+  backdropFilter: "blur(12px)",
+  borderRadius: "24px",
+  padding: "28px",
   width: "100%",
   maxWidth: "350px",
+  margin: "60px auto 80px",
   textAlign: "center",
-  boxShadow: "0 20px 40px rgba(0,0,0,0.3)",
-  position: "relative",
+  boxShadow: "0 10px 30px rgba(0,0,0,0.15)", // 👈 más suave
+  border: "1px solid rgba(255,255,255,0.3)", // 👈 glass effect
   transition: "all 0.3s ease",
-  marginTop: "60px",
-  marginBottom: "80px",
 };
 
 const preguntaStyle = {
@@ -205,11 +204,16 @@ const botonesResultado = {
 
 const botonResultado = {
   border: "none",
-  borderRadius: "12px",
-  padding: "12px",
+  borderRadius: "14px",
+  padding: "14px 18px", // 👈 más aire
   color: "white",
+  fontWeight: "600",
+  fontSize: "16px",
   cursor: "pointer",
-  transition: "transform 0.2s"
+  transition: "all 0.2s ease",
+  
+  background: "linear-gradient(135deg, #4f46e5, #7c3aed)", // 👈 degradado
+  boxShadow: "0 6px 16px rgba(0,0,0,0.2)",
 };
 
 const botonPrimario = {
