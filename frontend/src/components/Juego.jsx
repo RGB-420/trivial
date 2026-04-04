@@ -152,7 +152,7 @@ function Juego({ preguntas, onReset, onToggleRevision, onResultado, categoria, s
         style={{
           ...botonCircularGrande,
           position: "fixed",
-          bottom: "30px",
+          bottom: "20px",
           left: "50%",
           transform: "translateX(-50%)"
         }} 
