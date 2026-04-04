@@ -23,15 +23,7 @@ function Subcategoria({ subcategorias, onSelect, categoria }) {
         padding: "20px"
       }}
     >
-      <h1
-        style={{
-          position: "absolute",
-          top: "20px",
-          left: "50%",
-          transform: "translateX(-50%)",
-          color: "white"
-        }}
-      >
+      <h1 style={{ textAlign: "center", marginBottom: "20px" }}>
         {categoria}
       </h1>
 

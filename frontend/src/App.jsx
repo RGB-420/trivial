@@ -127,7 +127,6 @@ function App() {
 
     URL.revokeObjectURL(url);
   };
-  console.log(subcategoriaSeleccionada)
 
   return (
     <div>
