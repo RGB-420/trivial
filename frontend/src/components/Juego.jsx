@@ -237,8 +237,8 @@ const botonCircular = {
 
 const botonCircularGrande = {
   ...botonCircular,
-  width: "65px",
-  height: "65px",
+  width: "50px",
+  height: "50px",
   marginBottom: "20px"
 };
 

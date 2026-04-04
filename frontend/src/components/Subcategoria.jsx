@@ -1,4 +1,6 @@
-function Subcategoria({ subcategorias, onSelect, categoria }) {
+import { ArrowLeft} from "lucide-react";
+
+function Subcategoria({ subcategorias, onReset, onSelect, categoria }) {
   const coloresCategorias = {
     Historia: "#f1c40f",
     Ciencia: "#27ae60",
@@ -23,9 +25,43 @@ function Subcategoria({ subcategorias, onSelect, categoria }) {
         padding: "20px"
       }}
     >
-      <h1 style={{ textAlign: "center", marginBottom: "20px" }}>
-        {categoria}
-      </h1>
+    
+      {/* 🔝 HEADER */}
+      <div style={{
+        position: "absolute",
+        top: "20px",
+        left: "0",
+        width: "100%",
+        height: "120px", // 👈 importante
+      }}>
+
+        {/* botón back */}
+        <button 
+          style={{ 
+            ...botonCircular, 
+            position: "absolute", 
+            top: "0px",
+            left: "20px" 
+          }} 
+          onClick={onReset}
+        >
+          <ArrowLeft size={22} color="#222"/>
+        </button>
+
+        {/* título */}
+        <h1 style={{
+          position: "absolute",
+          top: "60px", // 👈 lo bajas
+          left: "50%",
+          transform: "translateX(-50%)",
+          fontSize: "44px",
+          fontWeight: "600",
+          textShadow: "0 2px 6px rgba(0,0,0,0.2)",
+        }}>
+          {categoria}
+        </h1>
+
+      </div>
 
       {/* 🎯 BOTONES */}
       <div
@@ -59,5 +95,18 @@ function Subcategoria({ subcategorias, onSelect, categoria }) {
     </div>
   );
 }
+
+const botonCircular = {
+  background: "white",
+  border: "none",
+  borderRadius: "50%",
+  width: "50px",
+  height: "50px",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  cursor: "pointer",
+  boxShadow: "0 8px 20px rgba(0,0,0,0.3)"
+};
 
 export default Subcategoria;

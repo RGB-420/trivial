@@ -141,6 +141,7 @@ function App() {
       ) : !subcategoriaSeleccionada ? (
         <Subcategoria
           subcategorias={subcatsRandom}
+          onReset={resetJuego}
           onSelect={setSubcategoriaSeleccionada}
           categoria={categoriaSeleccionada}
         />
