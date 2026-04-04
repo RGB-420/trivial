@@ -58,6 +58,7 @@ function Juego({ preguntas, onReset, onToggleRevision, onResultado, categoria, s
         top: "20px",
         left: "0",
         width: "100%",
+        lineHeight: 1.2,
         height: "120px", // 👈 importante
       }}>
 
