@@ -69,7 +69,7 @@ function Home({ categorias, onSelect, dificultad, setDificultad, onSave }) {
         style={{
           display: "grid",
           gridTemplateColumns: "1fr 1fr",
-          gap: "12px"
+          gap: "16px"
         }}
       >
         {categorias.map((cat) => (
@@ -77,18 +77,24 @@ function Home({ categorias, onSelect, dificultad, setDificultad, onSave }) {
             key={cat}
             onClick={() => onSelect(cat)}
             style={{
-              padding: "15px",
-              fontSize: "16px",
-              fontWeight: "bold",
-              borderRadius: "12px",
+              padding: "22px 16px",
+              fontSize: "17px",
+              fontWeight: "600",
+              borderRadius: "18px",
               border: "none",
               color: "white",
               backgroundColor: coloresCategorias[cat] || "#555",
-              boxShadow: "0 4px 8px rgba(0,0,0,0.2)",
+
+              boxShadow: "0 8px 20px rgba(0,0,0,0.25)",
+
               display: "flex",
+              flexDirection: "column",
               alignItems: "center",
               justifyContent: "center",
-              gap: "8px"
+              gap: "8px",
+
+              minHeight: "40px", // 👈 TODOS IGUALES
+              transition: "all 0.2s ease",
             }}
           >
             {iconosCategorias[cat]}
