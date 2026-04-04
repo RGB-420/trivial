@@ -58,25 +58,35 @@ function Juego({ preguntas, onReset, onToggleRevision, onResultado, categoria, s
         top: "20px",
         left: "0",
         width: "100%",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center"
+        height: "120px", // 👈 importante
       }}>
-        
+
         {/* botón back */}
         <button 
-          style={{ ...botonCircular, position: "absolute", left: "20px" }} 
+          style={{ 
+            ...botonCircular, 
+            position: "absolute", 
+            top: "0px",
+            left: "20px" 
+          }} 
           onClick={onReset}
         >
           <ArrowLeft size={22} color="#222"/>
         </button>
 
         {/* título */}
-        <h1 style={{fontSize: "44px",
-            fontWeight: "600",
-            textShadow: "0 2px 6px rgba(0,0,0,0.2)",}}>
+        <h1 style={{
+          position: "absolute",
+          top: "60px", // 👈 lo bajas
+          left: "50%",
+          transform: "translateX(-50%)",
+          fontSize: "44px",
+          fontWeight: "600",
+          textShadow: "0 2px 6px rgba(0,0,0,0.2)",
+        }}>
           {subcategoria}
         </h1>
+
       </div>
 
       {/* 🧾 CARD */}
