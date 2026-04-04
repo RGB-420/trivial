@@ -27,29 +27,28 @@ function Home({ categorias, onSelect, dificultad, setDificultad, onSave }) {
   };
 
   return (
-    <div style={{ padding: "20px", maxWidth: "400px", margin: "0 auto" }}>
-      
-      {/* 🧠 TÍTULO */}
-      <h1 style={{ textAlign: "center", marginBottom: "20px" }}>
-        Trivial App
-      </h1>
-
+    <div style={{ padding: "20px", maxWidth: "400px", margin: "0 auto", marginTop: "70px" }}>
       <p
         style={{
           textAlign: "center",
           fontSize: "14px",
           marginBottom: "20px",
-          background: "linear-gradient(90deg, #ff7f00, #8e44ad)",
+          background: "linear-gradient(90deg, #007104, #8e44ad)",
           WebkitBackgroundClip: "text",
           color: "transparent",
           fontWeight: "bold"
         }}
       >
-        presentado por RGB-420
-      </p>
+        RGB-420 presenta
+      </p>   
+
+      <h1 style={{ textAlign: "center", marginBottom: "20px" }}>
+        RGB Trivial
+      </h1>
+
 
       {/* 🎚️ SLIDER */}
-      <div style={{ marginBottom: "25px" }}>
+      <div style={{ marginTop: "60px", marginBottom: "60px" }}>
         <p style={{ textAlign: "center", fontWeight: "bold" }}>
           Dificultad: {dificultad}
         </p>
