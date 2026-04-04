@@ -82,6 +82,7 @@ function Juego({ preguntas, onReset, onToggleRevision, onResultado, categoria, s
           transform: "translateX(-50%)",
           fontSize: "44px",
           fontWeight: "600",
+          lineHeight: 1.2,
           textShadow: "0 2px 6px rgba(0,0,0,0.2)",
         }}>
           {subcategoria}
