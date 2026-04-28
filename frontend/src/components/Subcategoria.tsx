@@ -67,7 +67,7 @@ function Subcategoria({
       </h1>
       
       {/* 🎯 BOTONES */}
-      <div className="w-full max-w-sm flex flex-col gap-10 mt-5 ml-10 mr-10">
+      <div className="w-full max-w-sm flex flex-col gap-8 mt-5">
         {subcategorias.map((sub) => (
           <button
             key={sub}
@@ -76,7 +76,7 @@ function Subcategoria({
               p-5 py-10 text-2xl font-bold
               rounded-2xl
               bg-white text-gray-800
-              shadow-xl
+              shadow-xl ml-10 mr-10
               transition-all duration-200
               hover:scale-105 hover:shadow-2xl
               active:scale-95

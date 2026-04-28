@@ -44,12 +44,12 @@ function Juego({ preguntas, onReset, categoria, subcategoria }: JuegoProps) {
   return (
     <div
       className={`
-        min-h-[100dvh] flex flex-col items-center justify-start px-5
+        min-h-[100dvh] flex flex-col items-center justify-center px-5
         ${coloresCategorias[categoria] || "bg-gray-700"}
       `}
     >
       {/* 🔝 HEADER */}
-      <div className="absolute top-10 left-0 w-full flex justify-center items-center py-5 px-5">
+      <div className="absolute top-10 left-0 w-full flex justify-start items-center py-5 px-5">
         
         {/* botón back */}
         <button
@@ -67,7 +67,7 @@ function Juego({ preguntas, onReset, categoria, subcategoria }: JuegoProps) {
         </button>
       </div>
 
-      <h1 className="text-5xl font-bold text-white drop-shadow-lg text-center" style={{ fontFamily: '"Sour Gummy"' }}>
+      <h1 className="text-5xl font-bold text-white drop-shadow-lg text-center mt-15" style={{ fontFamily: '"Sour Gummy"' }}>
         {subcategoria}
       </h1>
 
