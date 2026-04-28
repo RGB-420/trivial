@@ -63,13 +63,13 @@ function Subcategoria({
       </h1>
       
       {/* 🎯 BOTONES */}
-      <div className="w-full max-w-sm flex flex-col gap-10 mt-5">
+      <div className="w-full max-w-sm flex flex-col gap-10 mt-5 ml-10 mr-10">
         {subcategorias.map((sub) => (
           <button
             key={sub}
             onClick={() => onSelect(sub)}
             className="
-              p-5 py-10 text-4xl font-bold
+              p-5 py-10 text-2xl font-bold
               rounded-2xl
               bg-white text-gray-800
               shadow-xl

@@ -44,7 +44,7 @@ function Juego({ preguntas, onReset, categoria, subcategoria }: JuegoProps) {
   return (
     <div
       className={`
-        min-h-screen flex flex-col items-center justify-center px-5 py-10
+        min-h-screen flex flex-col items-center justify-center px-5
         ${coloresCategorias[categoria] || "bg-gray-700"}
       `}
     >
@@ -82,8 +82,7 @@ function Juego({ preguntas, onReset, categoria, subcategoria }: JuegoProps) {
           onClick={() => setMostrarRespuesta(prev => !prev)}
           className="
             flex items-center justify-center mx-auto
-            mt-4
-            p-3 transition
+            p-1 transition
           "
         >
           {mostrarRespuesta ? (
@@ -96,7 +95,7 @@ function Juego({ preguntas, onReset, categoria, subcategoria }: JuegoProps) {
       <div
         className={`
           transition-all duration-300 overflow-hidden
-          ${mostrarRespuesta ? "max-h-[500px] opacity-100 mt-4" : "max-h-0 opacity-0"}
+          ${mostrarRespuesta ? "max-h-[400px] opacity-100" : "max-h-0 opacity-0"}
         `}
         style={{ fontFamily: '"Sour Gummy"' }}
       >
@@ -127,11 +126,11 @@ function Juego({ preguntas, onReset, categoria, subcategoria }: JuegoProps) {
       </div>
         
       </div>
-      <div className="flex flex-col items-center gap-2 mt-1">
+      <div className="fixed bottom-20 left-1/2 -translate-x-1/2">
         <button
           onClick={cambiarPregunta}
           className="
-            p-4 drop-shadow-lg
+            drop-shadow-lg
             hover:scale-110 hover:rotate-90
             transition
           "

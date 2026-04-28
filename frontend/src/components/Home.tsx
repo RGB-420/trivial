@@ -29,12 +29,12 @@ function Home({ categorias, onSelect }: HomeProps) {
   };
 
   const iconosCategorias: Record<string, ReactNode> = {
-    Historia: <LibraryBig size={50} />,
-    Deportes: <Medal size={50} />,
-    Ciencia: <TestTubes size={50} />,
-    Geografía: <Earth size={50} />,
-    "Arte y literatura": <Amphora size={50} />,
-    Entretenimiento: <Clapperboard size={50} />
+    Historia: <LibraryBig size={40} />,
+    Deportes: <Medal size={40} />,
+    Ciencia: <TestTubes size={40} />,
+    Geografía: <Earth size={40} />,
+    "Arte y literatura": <Amphora size={40} />,
+    Entretenimiento: <Clapperboard size={40} />
   };
 
   const diceIcons = {
@@ -105,7 +105,7 @@ function Home({ categorias, onSelect }: HomeProps) {
               shadow-xl
 
               flex flex-col items-center justify-center gap-2
-              min-h-[180px]
+              min-h-[150px]
               transition-all duration-200
               hover:scale-105 hover:shadow-2xl
               active:scale-95
@@ -114,7 +114,7 @@ function Home({ categorias, onSelect }: HomeProps) {
             <div>
               {iconosCategorias[cat]}
             </div>
-            <span className="text-2xl" style={{ fontFamily: '"Sour Gummy"' }}>{cat}</span>
+            <span className="text-xl" style={{ fontFamily: '"Sour Gummy"' }}>{cat}</span>
           </button>
         ))}
       </div>
