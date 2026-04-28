@@ -79,7 +79,7 @@ function Home({ categorias, onSelect }: HomeProps) {
   };
 
   return (
-    <div className="px-5 py-10 max-w-md mx-auto min-h-screen bg-white text-black dark:bg-gray-900 dark:text-white">
+    <div className="px-5 py-10 max-w-md justify-start mx-auto min-h-[100dvh] bg-white text-black dark:bg-gray-900 dark:text-white">
 
       {/* HEADER */}
       <p className="text-center mt-8 text-lg mb-5 font-bold bg-linear-to-r from-green-700 to-purple-600 bg-clip-text text-transparent" style={{ fontFamily: '"Sour Gummy"' }}>

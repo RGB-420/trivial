@@ -42,7 +42,11 @@ function Subcategoria({
   return (
     <div
       className={`
-        min-h-screen flex flex-col items-center justify-start pt-20
+        min-h-[100dvh]
+          flex flex-col
+          items-center
+          justify-start
+          pt-10
         ${coloresCategorias[categoria] || "bg-gray-700"}
       `}
     >

@@ -19,7 +19,7 @@ function App() {
   } = useGame();
 
   return (
-    <div className="min-h-screen bg-white text-black dark:bg-gray-900 dark:text-white">
+    <div className="min-h-dvh bg-white text-black dark:bg-gray-900 dark:text-white">
       
       {screen === "home" && (
         <Home

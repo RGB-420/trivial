@@ -44,7 +44,7 @@ function Juego({ preguntas, onReset, categoria, subcategoria }: JuegoProps) {
   return (
     <div
       className={`
-        min-h-screen flex flex-col items-center justify-center px-5
+        min-h-[100dvh] flex flex-col items-center justify-start px-5
         ${coloresCategorias[categoria] || "bg-gray-700"}
       `}
     >
@@ -57,6 +57,13 @@ function Juego({ preguntas, onReset, categoria, subcategoria }: JuegoProps) {
           className="absolute left-5 p-3 drop-shadow-lg hover:scale-110 transition"
         >
           <ArrowLeft size={50} className="text-white" />
+        </button>
+
+                <button
+          onClick={cambiarPregunta}
+          className="absolute right-5 p-3 drop-shadow-lg hover:scale-110 transition"
+        >
+          <RotateCw size={50} className="text-white" />
         </button>
       </div>
 
@@ -127,16 +134,7 @@ function Juego({ preguntas, onReset, categoria, subcategoria }: JuegoProps) {
         
       </div>
       <div className="fixed bottom-20 left-1/2 -translate-x-1/2">
-        <button
-          onClick={cambiarPregunta}
-          className="
-            drop-shadow-lg
-            hover:scale-110 hover:rotate-90
-            transition
-          "
-        >
-          <RotateCw size={50} className="text-white" />
-        </button>
+
       </div>
     </div>
   );
