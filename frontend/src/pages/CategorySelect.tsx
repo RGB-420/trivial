@@ -5,19 +5,30 @@ import {
   Earth,
   Amphora,
   Clapperboard,
+  House
 } from "lucide-react";
 import { Dice1, Dice2, Dice3, Dice4, Dice5, Dice6 } from "lucide-react";
 import { useState } from "react";
 import type { ReactNode } from "react";
 
+import StatsBar from "../components/StatsBar";
+import { Stats } from "../types";
+import { useNavigate } from "react-router-dom";
+import ConfirmModal from "../components/ConfirmModal";
+
+
 // 🔹 Props tipadas
 type HomeProps = {
   categorias: string[];
   onSelect: (cat: string) => void;
-  onSave?: () => void; // opcional (no lo estás usando ahora)
+  stats: Stats;
+  onReset: () => void;
+  modo: "infinito" | "quesitos";   // 👈 AÑADIR
+  objetivo?: number;  
 };
 
-function Home({ categorias, onSelect }: HomeProps) {
+
+function CategorySelect({ categorias, onSelect, stats, onReset , modo, objetivo}: HomeProps) {
   // 🔹 Tipamos los objetos como Record<string, string>
   const coloresCategorias: Record<string, string> = {
     Historia: "bg-yellow-400",
@@ -78,17 +89,18 @@ function Home({ categorias, onSelect }: HomeProps) {
     }
   };
 
+  const navigate = useNavigate();
+  const [showExitModal, setShowExitModal] = useState(false);
+
   return (
     <div className="px-5 py-10 max-w-md justify-start mx-auto min-h-[100dvh] bg-white text-black dark:bg-gray-900 dark:text-white">
 
-      {/* HEADER */}
-      <p className="text-center mt-8 text-lg mb-5 font-bold bg-linear-to-r from-green-700 to-purple-600 bg-clip-text text-transparent" style={{ fontFamily: '"Sour Gummy"' }}>
-        RGB-420 presenta
-      </p>
-
-      <h1 className="font-semibold text-center text-6xl tracking-wide drop-shadow-xl" style={{ fontFamily: '"Sour Gummy"' }}>
-        RGB Trivial
-      </h1>
+      <StatsBar
+        categorias={categorias}
+        stats={stats}
+        modo={modo}
+        objetivo={objetivo}
+      />
 
       {/* GRID */}
       <div className="grid grid-cols-2 gap-5 mt-10 drop-shadow-xl">
@@ -128,7 +140,19 @@ function Home({ categorias, onSelect }: HomeProps) {
       hover:scale-110 transition
     "
   >
-    <Dice6 size={40} className="text-gray-800" />
+    <Dice6 size={40} className="text-black" />
+  </button>
+
+  <button
+    onClick={() => setShowExitModal(true)}
+    className="
+      fixed bottom-6 left-6
+      p-4 rounded-full
+      bg-white shadow-xl
+      hover:scale-110 transition
+    "
+  >
+    <House  size={40} className="text-black" />
   </button>
 
   {showDice && diceValue && (
@@ -171,15 +195,25 @@ function Home({ categorias, onSelect }: HomeProps) {
               ${rolling ? "scale-100" : "scale-110"}
             `}
           />
+          
 
         </div>
       );
     })()}
   </div>
-)}
-
-    </div>
-  );
+  )}
+    <ConfirmModal
+    isOpen={showExitModal}
+    onCancel={() => setShowExitModal(false)}
+    onConfirm={() => {
+      setShowExitModal(false);
+      onReset();
+      navigate("/");
+    }}
+  />
+  </div>
+  
+);
 }
 
-export default Home;
+export default CategorySelect;

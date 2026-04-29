@@ -12,3 +12,10 @@ export type Pregunta = {
   veces_fallada?: number;
   marcada_revision?: boolean;
 };
+
+export type Stats = {
+  [categoria: string]: {
+    correctas: number;
+    incorrectas: number;
+  };
+};

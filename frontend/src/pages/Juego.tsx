@@ -14,9 +14,15 @@ type JuegoProps = {
   onReset: () => void;
   categoria: string;
   subcategoria: string;
+
+  onCorrect: () => void;    
+  onIncorrect?: () => void;
+  onComplete?: () => void;
+
+  modo: "infinito" | "quesitos"
 };
 
-function Juego({ preguntas, onReset, categoria, subcategoria }: JuegoProps) {
+function Juego({ preguntas, onReset, categoria, subcategoria, onCorrect, onIncorrect, onComplete, modo }: JuegoProps) {
   const coloresCategorias: Record<string, string> = {
     Historia: "bg-yellow-400",
     Deportes: "bg-orange-500",
@@ -40,6 +46,33 @@ function Juego({ preguntas, onReset, categoria, subcategoria }: JuegoProps) {
       setIndice((prev) => (prev + 1) % preguntasMezcladas.length)
     }, 200)
   }
+
+  const [resultado, setResultado] = useState<"correcto" | "incorrecto" | null>(null);
+  
+  const manejarRespuesta = (tipo: "correcto" | "incorrecto") => {
+    setResultado(tipo);
+
+    if (tipo === "correcto") {
+      onCorrect?.();
+
+      if (modo === "quesitos") {
+        onComplete?.();
+      }
+    } else {
+      onIncorrect?.();
+    }
+
+    setTimeout(() => {
+      setResultado(null);
+
+      if (modo === "infinito") {
+        onReset(); 
+      } else {
+        onReset();
+      }
+
+    }, 800);
+  };
 
   return (
     <div
@@ -117,14 +150,14 @@ function Juego({ preguntas, onReset, categoria, subcategoria }: JuegoProps) {
         {/* botones */}
         <div className="flex justify-center gap-10 mt-2">
           <button
-            onClick={onReset}
+            onClick={() => manejarRespuesta("correcto")}
             className=" text-green-700 p-3 hover:scale-110 transition"
           >
             <Check size={40} />
           </button>
 
           <button
-            onClick={onReset}
+            onClick={() => manejarRespuesta("incorrecto")}
             className=" text-red-500 p-3 hover:scale-110 transition"
           >
             <X size={40} />
@@ -133,9 +166,33 @@ function Juego({ preguntas, onReset, categoria, subcategoria }: JuegoProps) {
       </div>
         
       </div>
-      <div className="fixed bottom-20 left-1/2 -translate-x-1/2">
+      
+      {resultado && (
+        <div className={`
+          fixed inset-0 z-50
+          flex items-center justify-center
+          transition-all duration-300
+          ${resultado === "correcto" ? "bg-green-500/80" : "bg-red-500/80"}
+        `}>
+          
+          <div className="
+            flex flex-col items-center
+            animate-[pop_0.4s_ease-out]
+          ">
+            
+            {resultado === "correcto" ? (
+              <Check size={120} className="text-white" />
+            ) : (
+              <X size={120} className="text-white" />
+            )}
 
-      </div>
+            <p className="text-white text-2xl font-bold mt-4">
+              {resultado === "correcto" ? "¡Correcto!" : "Incorrecto"}
+            </p>
+
+          </div>
+        </div>
+      )}
     </div>
   );
 }

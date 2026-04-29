@@ -10,8 +10,11 @@ export function useGame() {
   const [subcategoria, setSubcategoria] = useState<string | null>(null);
 
   // 🔹 categorías únicas
-  const categorias = [...new Set(preguntas.map(p => p.categoria))];
-
+  const categorias = useMemo(
+    () => [...new Set(preguntas.map(p => p.categoria))],
+    [preguntas]
+  );
+  
   // 🔹 filtrado por categoría
   const preguntasFiltradas = preguntas.filter(
     p => p.categoria === categoria
@@ -22,7 +25,7 @@ export function useGame() {
     return shuffleArray(
       [...new Set(preguntasFiltradas.map(p => p.subcategoria))]
     ).slice(0, 2);
-  }, [categoria]);
+  }, [preguntasFiltradas]);
 
   const preguntasJuego = useMemo(() => {
     return shuffleArray(
@@ -30,11 +33,11 @@ export function useGame() {
         p => p.subcategoria === subcategoria
       )
     );
-  }, [categoria, subcategoria]);
+  }, [preguntasFiltradas, subcategoria]);
 
   // 🔹 navegación
   const screen = !categoria
-    ? "home"
+    ? "categoria"
     : !subcategoria
     ? "subcategoria"
     : "juego";
